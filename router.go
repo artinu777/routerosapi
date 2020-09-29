@@ -10,10 +10,8 @@ import (
 )
 
 type Router struct {
-	routeAuth  *RouterAuth
-	client     *routeros.Client
-	Ip         ip.Ip
-	_Interface inter.Inter
+	routeAuth *RouterAuth
+	client    *routeros.Client
 }
 
 type RouterAuth struct {
@@ -52,8 +50,12 @@ func (receiver *Router) Connect(address string) (*Router, error) {
 	return receiver, nil
 }
 
-func (receiver *Router) name() {
+func (receiver *Router) Ip() *ip.Ip {
+	return &ip.Ip{client: receiver.client}
+}
 
+func (receiver *Router) Inter() *inter.Inter {
+	return &inter.Inter{client: receiver.client}
 }
 
 func Example() {
