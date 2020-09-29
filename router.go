@@ -51,13 +51,11 @@ func (receiver *Router) Connect(address string) (*Router, error) {
 }
 
 func (receiver *Router) Ip() *ip.Ip {
-	return &ip.Ip{client: receiver.client}
+	return &ip.Ip{Client: receiver.client}
 }
 
 func (receiver *Router) Inter() *inter.Inter {
-	return &inter.Inter{client: receiver.client}
+	return &inter.Inter{Client: receiver.client}
 }
 
-func Example() {
 
-}

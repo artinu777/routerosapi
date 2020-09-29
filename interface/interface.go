@@ -11,12 +11,12 @@ import (
 )
 
 type Inter struct {
-	client *routeros.Client
+	Client *routeros.Client
 }
 
 func (receiver *Inter) Print() {
 	properties := flag.String("properties", "name,rx-byte,tx-byte,rx-packet,tx-packet", "Properties")
-	reply, err := receiver.client.Run("/interface/print", "?disabled=false", "?running=true", "=.proplist="+*properties)
+	reply, err := receiver.Client.Run("/interface/print", "?disabled=false", "?running=true", "=.proplist="+*properties)
 	if err != nil {
 		log.Fatal(err)
 	}

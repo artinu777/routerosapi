@@ -7,7 +7,7 @@ import (
 )
 
 type Ip struct {
-	client *routeros.Client
+	Client *routeros.Client
 	Route
 }
 
