@@ -1,13 +1,11 @@
 package inter
 
-
 import (
-"flag"
-"fmt"
-"log"
-"strings"
+	"fmt"
+	"log"
+	"strings"
 
-"github.com/go-routeros/routeros"
+	"github.com/go-routeros/routeros"
 )
 
 type Inter struct {
@@ -15,14 +13,13 @@ type Inter struct {
 }
 
 func (receiver *Inter) Print() {
-	properties := flag.String("properties", "name,rx-byte,tx-byte,rx-packet,tx-packet", "Properties")
-	reply, err := receiver.Client.Run("/interface/print", "?disabled=false", "?running=true", "=.proplist="+*properties)
+	reply, err := receiver.Client.Run("/interface/print", "?disabled=false", "?running=true", "=.proplist=name,rx-byte,tx-byte,rx-packet,tx-packet")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	for _, re := range reply.Re {
-		for _, p := range strings.Split(*properties, ",") {
+		for _, p := range strings.Split("name,rx-byte,tx-byte,rx-packet,tx-packet", ",") {
 			fmt.Print(re.Map[p], "\t")
 		}
 		fmt.Print("\n")
