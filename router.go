@@ -5,11 +5,15 @@ import (
 
 	"github.com/go-routeros/routeros"
 
+	inter "github.com/artinu777/routerosapi/interface"
+	"github.com/artinu777/routerosapi/ip"
 )
 
 type Router struct {
-	routeAuth *RouterAuth
-	client    *routeros.Client
+	routeAuth  *RouterAuth
+	client     *routeros.Client
+	Ip         ip.Ip
+	_Interface inter.Inter
 }
 
 type RouterAuth struct {
@@ -48,13 +52,10 @@ func (receiver *Router) Connect(address string) (*Router, error) {
 	return receiver, nil
 }
 
-
-func (receiver *Router) name()  {
+func (receiver *Router) name() {
 
 }
 
-
 func Example() {
-
 
 }
